@@ -1,16 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const seatController = require("../controllers/seatController");
 
-console.log("SeatController:", seatController);
+const {
+  lockSeat,
+  confirmSeat,
+  checkSeat,
+  getAllSeats
+} = require("../controllers/seatController");
 
 // Lock seat
-router.post("/lock", seatController.lockSeat);
+router.post("/lock", lockSeat);
 
 // Confirm booking
-router.post("/confirm", seatController.confirmSeat);
+router.post("/confirm", confirmSeat);
 
-// Check seat status
-router.get("/:seatId", seatController.checkSeat);
+// Check single seat
+router.get("/:seatId", checkSeat);
+
+// Get all seats
+router.get("/", getAllSeats);
 
 module.exports = router;

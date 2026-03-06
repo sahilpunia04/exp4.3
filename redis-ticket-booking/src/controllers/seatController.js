@@ -73,7 +73,7 @@ const checkSeat = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
-exports.getAllSeats = async (req, res) => {
+const getAllSeats = async (req, res) => {
   try {
     const seats = await redisClient.keys("seat:*");
     res.json(seats);
@@ -84,5 +84,6 @@ exports.getAllSeats = async (req, res) => {
 module.exports = {
   lockSeat,
   confirmSeat,
-  checkSeat
+  checkSeat,
+  getAllSeats
 };
